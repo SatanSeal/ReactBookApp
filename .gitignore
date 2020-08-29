@@ -2,8 +2,8 @@ node_modules
 .env
 ngrok.*
 *.rest
-myCryptography.js
 gitInstructions.txt
 userDB.js
 bookDB.js
 ngrokInstructions.txt
+build
