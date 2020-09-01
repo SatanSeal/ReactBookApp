@@ -6,7 +6,7 @@ let express = require('express'),
 // get all books
 router.get('/', async (req,res) => {
     try {
-        const allBooks = await BookPool.query('SELECT * FROM "Books" ORDER BY id');
+        const allBooks = await BookPool.query('SELECT * FROM "Books" ORDER BY id');    
         res.status(200).json(allBooks.rows);
     } catch (err) {
         console.error(err);

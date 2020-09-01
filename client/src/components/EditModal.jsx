@@ -12,7 +12,7 @@ const EditModal = ({book, CSRFToken, end}) => {
         try {
             setLoading(true);
             const body = { title, description };
-            await fetch(`/books/${book.id}`, {
+            await fetch(`/API__books/${book.id}`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json",
                           "CSRF-Token" : CSRFToken},

@@ -13,7 +13,7 @@ const User = () => {
 
     const vj = async (req, res) => {
         setLoading(true);
-        const response = await fetch('/secure/verifyJWT');
+        const response = await fetch('/API__secure/verifyJWT');
         const user = await response.json();
         if (user.username === "Guest"){
             return history.goBack();
@@ -23,7 +23,7 @@ const User = () => {
     }; 
 
     const logout = async () => {
-        await fetch('/user/logout');
+        await fetch('/API__user/logout');
         history.push('/');
     }
 

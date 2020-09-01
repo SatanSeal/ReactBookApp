@@ -10,7 +10,7 @@ const AddModal = ({author}) => {
     const [Loading, setLoading] = useState(false);
 
     const getCSRFToken = async () => {
-        const response = await fetch ('/secure/csrf-token');
+        const response = await fetch ('/API__secure/csrf-token');
         const token = await response.json();
         setCSRFToken(JSON.stringify(token).split('"')[3]);
     };
@@ -30,7 +30,7 @@ const AddModal = ({author}) => {
         try {
             setLoading(true);
             const body = { title, description, author };
-            await fetch("/books/add", {
+            await fetch("/API__books/add", {
                 method: "POST",
                 headers: {"Content-Type": "application/json",
                           "CSRF-Token" : CSRFToken},

@@ -46,7 +46,7 @@ const SearchedBooks = () => {
         value = splited[2];
         try {
             setLoading(true);
-            const response = await fetch(`/books/search=${select}=${value}`);
+            const response = await fetch(`/API__books/search=${select}=${value}`);
             const jsonData = await response.json();
             setAllBooks(jsonData);
             setLoading(false);

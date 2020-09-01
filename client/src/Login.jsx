@@ -14,7 +14,7 @@ const Login = () => {
     const [Loading, setLoading] = useState(false);
 
     async function UserCheck() {
-        const response = await fetch('/secure/verifyJWT');
+        const response = await fetch('/API__secure/verifyJWT');
         const check = await response.json();
         if (check !== 0){
             history.push('/');
@@ -23,7 +23,7 @@ const Login = () => {
 
     const getJwt = async (user) => {
         const body = { user };
-        await fetch('/secure/jwt', {
+        await fetch('/API__secure/jwt', {
             method: "POST",
             headers: {"Content-Type": "application/json",
                       "CSRF-Token" : CSRFToken},
@@ -32,7 +32,7 @@ const Login = () => {
     };
 
     const getCSRFToken = async () => {
-        const response = await fetch ('/secure/csrf-token');
+        const response = await fetch ('/API__secure/csrf-token');
         const token = await response.json();
         setCSRFToken(JSON.stringify(token).split('"')[3]);
         return JSON.stringify(token).split('"')[3];
@@ -73,7 +73,7 @@ const Login = () => {
 
         setLoading(true);
         const body = { email };
-        const response = await fetch('/user/login', {
+        const response = await fetch('/API__user/login', {
             method: "POST",
             headers: {"Content-Type": "application/json",
                       "CSRF-Token" : CSRFToken},

@@ -9,7 +9,7 @@ const MyHeader = () => {
 
     const vj = async (req, res) => {
         setLoading(true);
-        const response = await fetch('/secure/verifyJWT');
+        const response = await fetch('/API__secure/verifyJWT');
         const user = await response.json(); // {normal user} / 0 if no user / 1 if bad jwt
         const error = JSON.stringify(user);
         if (error === '1'){

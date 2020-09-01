@@ -17,7 +17,7 @@ const Book = ({ match }) => {
     const getBook = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`/books/${match.params.id}`);
+            const response = await fetch(`/API__books/${match.params.id}`);
             const jsonData = await response.json();
             setBook(jsonData[0]);
             setLoading(false);
@@ -27,13 +27,13 @@ const Book = ({ match }) => {
     }
 
     const vj = async (req, res) => {
-        const response = await fetch('/secure/verifyJWT');
+        const response = await fetch('/API__secure/verifyJWT');
         const user = await response.json();
         setUser(user); 
     }; 
 
     const getCSRFToken = async () => {
-        const response = await fetch ('/secure/csrf-token');
+        const response = await fetch ('/API__secure/csrf-token');
         const token = await response.json();
         setCSRFToken(JSON.stringify(token).split('"')[3]);
     };
@@ -44,7 +44,7 @@ const Book = ({ match }) => {
             return;
         }
         try {
-            await fetch(`/books/${id}`, {
+            await fetch(`/API__books/${id}`, {
                 method: "DELETE",
                 headers: { "CSRF-Token" : CSRFToken }
             }).then(

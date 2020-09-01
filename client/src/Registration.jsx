@@ -17,7 +17,7 @@ const Registration = () => {
     //const [regError, setRegError] = useState(null);
 
     async function UserCheck() {
-        const response = await fetch('/secure/verifyJWT');
+        const response = await fetch('/API__secure/verifyJWT');
         const check = await response.json();
         if (check !== 0){
             history.push('/');
@@ -25,7 +25,7 @@ const Registration = () => {
     }
 
     const getCSRFToken = async () => {
-        const response = await fetch ('/secure/csrf-token');
+        const response = await fetch ('/API__secure/csrf-token');
         const token = await response.json();
         setCSRFToken(JSON.stringify(token).split('"')[3]);
     }
@@ -34,7 +34,7 @@ const Registration = () => {
         try{
             setLoading(true);
             const body = { parameter, value };
-            const response = await fetch('/user/check', {
+            const response = await fetch('/API__user/check', {
                 method: "POST",
                 headers: {"Content-Type": "application/json",
                           "CSRF-Token" : CSRFToken},
@@ -116,7 +116,7 @@ const Registration = () => {
                 if (err) throw err;
                 try {
                     const body = { username, email, hashedPassword };
-                    fetch('/user/register', {
+                    fetch('/API__user/register', {
                         method: "POST",
                         headers: {"Content-Type": "application/json",
                                   "CSRF-Token" : CSRFToken},

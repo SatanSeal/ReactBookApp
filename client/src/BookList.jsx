@@ -31,7 +31,7 @@ const BookList = () => {
 
     const getBooks = async () => {
         try {
-            const response = await fetch('/books');
+            const response = await fetch('/API__books');
             const jsonData = await response.json();
             setAllBooks(jsonData);
             setLoading(false);
